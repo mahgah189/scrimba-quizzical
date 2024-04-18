@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-image: url("./assets/quizzical-background.png");
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 800px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.left-blob,
+.right-blob {
+    position: absolute;
+    z-index: -1;
+}
+
+.left-blob {
+    left: 0;
+    bottom: 0;
+}
+
+.right-blob {
+    right: 0;
+    top: 0;
+}

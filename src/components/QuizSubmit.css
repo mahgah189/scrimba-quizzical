@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+.quiz-submit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    margin: 2em 0;
+}
+
+.quiz-submit-container p {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.quiz-submit-container button {
+    font-size: 1em;
+    padding: 1em 4em;
+    color: #F5F7FB;
+    background-color: #4D5B9E;
+    border: none;
+    border-radius: 1em;
+    cursor: pointer;
+}
