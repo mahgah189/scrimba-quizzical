@@ -22,11 +22,9 @@ function App() {
         if (quizStarted) {
             fetch("https://opentdb.com/api.php?amount=5&type=multiple")
                 .then(response => response.json())
-                .then(questionData => {
-                    // If the API call isn't responding, change the parameter from questionData to any other 
-                    // label. The code below will then use the questionData array imported at the top
-                    // of the component.
-                    const arrayOfAnswerSetObjects = [];
+                .then(data => {
+                    // If the API call isn't responding, comment out lines 23-25 & 54 to execute the code using data.js
+                    const tempArrayOfQuestionsAndAnswers = [];
                     questionData.results.forEach(questionObj => {
                         const questionObject = {};
                         const arrayOfAnswers = [];
@@ -50,9 +48,9 @@ function App() {
                         });
                         questionObject.question = decode(questionObj.question);
                         questionObject.answers = shuffleAnswers(arrayOfAnswers);
-                        arrayOfAnswerSetObjects.push(questionObject);
+                        tempArrayOfQuestionsAndAnswers.push(questionObject);
                     });
-                    changeQuestionsArray(arrayOfAnswerSetObjects);
+                    changeQuestionsArray(tempArrayOfQuestionsAndAnswers);
                 });
         }
     }, [quizStarted]);
