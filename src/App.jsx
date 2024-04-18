@@ -88,10 +88,10 @@ function App() {
                 return {
                     ...questionObj,
                     answers: doesQuestionContainSelectedAnswer(questionObj) 
-                        ? questionObj.answers.map(answerSet => {
+                        ? questionObj.answers.map(answer => {
                             return {
-                                ...answerSet,
-                                isSelected: event.target.id === answerSet.id ? true : false
+                                ...answer,
+                                isSelected: event.target.id === answer.id ? true : false
                             };
                         }) 
                         : questionObj.answers
