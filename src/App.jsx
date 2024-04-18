@@ -5,14 +5,11 @@ import StartScreen from "./components/StartScreen";
 import Question from "./components/Question";
 import QuizSubmit from "./components/QuizSubmit";
 import leftBlob from "./assets/left-blob.png";
-import rightBlob from "./assets/right-blob.png"
+import rightBlob from "./assets/right-blob.png";
 import questionData from "../data.js";
 import './App.css';
 
-// To-do:
-//
-// - Track selected answer
-// - Pass correct answer count into the quiz submit component
+// Kept questionData in case API goes down
 
 function App() {
 
@@ -24,17 +21,14 @@ function App() {
         function shuffleAnswers(arrayOfAnswers) {
             return arrayOfAnswers.sort(() => Math.random() - 0.5);
         };
-
         if (quizStarted) {
             fetch("https://opentdb.com/api.php?amount=5&type=multiple")
                 .then(response => response.json())
                 .then(questionData => {
                     const arrayOfAnswerSetObjects = [];
-
                     questionData.results.forEach(questionObj => {
                         const questionObject = {};
                         const arrayOfAnswers = [];
-
                         arrayOfAnswers.push(
                             {
                                 answer: decode(questionObj.correct_answer),
@@ -43,7 +37,6 @@ function App() {
                                 isSelected: false
                             }
                         );
-
                         questionObj.incorrect_answers.forEach(incorrectAnswer => {
                             arrayOfAnswers.push(
                                 {
@@ -54,17 +47,14 @@ function App() {
                                 }
                             )
                         });
-
                         questionObject.question = decode(questionObj.question);
                         questionObject.answers = shuffleAnswers(arrayOfAnswers);
                         arrayOfAnswerSetObjects.push(questionObject);
                     });
-
                     changeQuestionsArray(arrayOfAnswerSetObjects);
                 });
         }
     }, [quizStarted]);
-
     const questionElement = arrayOfQuestionsAndAnswers.map(questionObj => {
         return <Question 
             key = {questionObj.question}
@@ -73,7 +63,7 @@ function App() {
             selectAnswerFunction = {selectAnswerFunction}
             quizSubmitted = {quizSubmitted}
         />
-    })
+    });
 
     function startQuiz() {
         toggleQuizStarted(!quizStarted);
@@ -87,16 +77,14 @@ function App() {
     function selectAnswerFunction(event) {
         changeQuestionsArray(previousQuestionsArray => {
             return previousQuestionsArray.map(questionObj => {
-                
-                // Check if a certain answer set contains the id of the event target
+                // If doesQuestionContainSelectedAnswer is not true, that question will remain unchanged
                 function doesQuestionContainSelectedAnswer(question) {
                     for (let i = 0; i < question.answers.length; i++) {
                         if (Object.values(question.answers[i]).includes(event.target.id)) {
                             return true;
-                        }
-                    }
-                }
-
+                        };
+                    };
+                };
                 return {
                     ...questionObj,
                     answers: doesQuestionContainSelectedAnswer(questionObj) 
@@ -104,10 +92,10 @@ function App() {
                             return {
                                 ...answerSet,
                                 isSelected: event.target.id === answerSet.id ? true : false
-                            }
+                            };
                         }) 
                         : questionObj.answers
-                }
+                };
             });
         });
     };
@@ -131,7 +119,7 @@ function App() {
                 />
             </>}
         </main>
-    )
+    );
 };
 
 export default App;

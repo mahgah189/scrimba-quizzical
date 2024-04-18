@@ -5,7 +5,6 @@ function Question(props) {
 
     function setClassName(checkIfSubmitted, checkIfSelected, checkIfCorrect) {
         let className;
-
         if (checkIfSubmitted && checkIfSelected && !checkIfCorrect) {
             className = "incorrect-answer "
         } else if (checkIfSubmitted && !checkIfSelected && !checkIfCorrect) {
@@ -14,10 +13,9 @@ function Question(props) {
             className = "correct-answer"
         } else if (!checkIfSubmitted && checkIfSelected) {
             className = "selected-answer"
-        }
-
+        };
         return className;
-    }
+    };
 
     const liElement = props.answers.map(answerObj => {
         return <li 
@@ -28,7 +26,7 @@ function Question(props) {
         >
             {answerObj.answer}
         </li>
-    })
+    });
 
     return (
         <div className="question-container">
@@ -37,7 +35,7 @@ function Question(props) {
                 {liElement}
             </ul>
         </div>
-    )
+    );
 };
 
 export default Question;

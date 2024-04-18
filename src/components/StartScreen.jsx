@@ -8,7 +8,7 @@ function StartScreen(props) {
             <p>Test your knowledge 🧙‍♂️</p>
             <button onClick={props.startQuiz}>Start quiz</button>
         </div>
-    )
+    );
 };
 
 export default StartScreen;

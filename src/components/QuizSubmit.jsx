@@ -1,21 +1,19 @@
 import React from "react";
-import "./QuizSubmit.css"
+import "./QuizSubmit.css";
 
 function QuizSubmit(props) {
 
     function countCorrectAnswers(questionAndAnswerProp) {
         let correctAnswerCount = 0;
-
         questionAndAnswerProp.forEach(questionObj => {
             questionObj.answers.forEach(answerObj => {
                 if (answerObj.isCorrect && answerObj.isSelected) {
                     correctAnswerCount++
                 }
             })
-        })
-
-        return correctAnswerCount
-    }
+        });
+        return correctAnswerCount;
+    };
 
     return (
         <div className="quiz-submit-container">
@@ -25,7 +23,7 @@ function QuizSubmit(props) {
                 : <button onClick={props.submitQuiz}>Check answers</button>
             }
         </div>
-    )
+    );
 };
 
 export default QuizSubmit;
