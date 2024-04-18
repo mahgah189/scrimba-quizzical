@@ -1,5 +1,6 @@
 .question-container {
     width: 75%;
+    max-width: 800px;
     border-bottom: 1px solid #DBDEF0;
     margin-left: 10%;
     margin-right: 10%;
@@ -7,6 +8,7 @@
 
 .question-container h2 {
     text-align: left;
+    font-size: 1.25rem;
     margin-bottom: 0;
 }
 

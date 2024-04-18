@@ -108,12 +108,12 @@ function App() {
                         }) 
                         : questionObj.answers
                 }
-            })
-        })
+            });
+        });
     };
 
     return (
-        <main className="main-container">
+        <main className={quizStarted ? "main-container" : "main-container main-container-height"}>
             <img src={leftBlob} className="left-blob"/>
             <img src={rightBlob} className="right-blob"/>
             {!quizStarted 

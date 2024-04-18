@@ -25,7 +25,6 @@ function Question(props) {
             id = {answerObj.id}
             onClick = {(event) => props.selectAnswerFunction(event)}
             className = {setClassName(props.quizSubmitted, answerObj.isSelected, answerObj.isCorrect)}
-            // className = {answerObj.isSelected ? "selected-answer" : ""}
         >
             {answerObj.answer}
         </li>
