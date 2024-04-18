@@ -54,6 +54,7 @@ function App() {
                 });
         }
     }, [quizStarted]);
+    
     const questionElement = arrayOfQuestionsAndAnswers.map(questionObj => {
         return <Question 
             key = {questionObj.question}
