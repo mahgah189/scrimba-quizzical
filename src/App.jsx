@@ -22,7 +22,7 @@ function App() {
         if (quizStarted) {
             fetch("https://opentdb.com/api.php?amount=5&type=multiple")
                 .then(response => response.json())
-                .then(data => {
+                .then(questionData => {
                     // If the API call isn't responding, comment out lines 23-25 & 54 to execute the code using data.js
                     const tempArrayOfQuestionsAndAnswers = [];
                     questionData.results.forEach(questionObj => {
