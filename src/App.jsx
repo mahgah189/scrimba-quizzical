@@ -9,8 +9,6 @@ import rightBlob from "./assets/right-blob.png";
 import questionData from "../data.js";
 import './App.css';
 
-// Kept questionData in case API goes down
-
 function App() {
 
     const [quizStarted, toggleQuizStarted] = React.useState(false);
@@ -25,6 +23,9 @@ function App() {
             fetch("https://opentdb.com/api.php?amount=5&type=multiple")
                 .then(response => response.json())
                 .then(questionData => {
+                    // If the API call isn't responding, change the parameter from questionData to any other 
+                    // label. The code below will then use the questionData array imported at the top
+                    // of the component.
                     const arrayOfAnswerSetObjects = [];
                     questionData.results.forEach(questionObj => {
                         const questionObject = {};
